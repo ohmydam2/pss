@@ -31,8 +31,8 @@ char const *errorToString(Error error) {
 }
 
 
-
 /***** HELP *****/
+
 
 Error checkArguments(int argc, char const **argv, Command *command) {
 #define TAG "checkArguments"
@@ -58,3 +58,28 @@ sos:
 #undef TAG
 }
 
+
+/***** COMMAND FUNCTIONS *****/
+
+
+void runAdd(int argc, char const **argv) {
+    // to implement
+}
+
+void runClean(int argc, char const **argv) {
+    // to implement
+}
+
+void runCommand(int argc, char const **argv, Command command) {
+    switch (command)
+    {
+    case ADD:
+        // to implement
+        break;
+    case CLEAN:
+        // to implement
+        break;
+    default:
+        break;
+    }
+}
