@@ -1,14 +1,16 @@
 cmake_minimum_required(VERSION 3.20)
 
-project(Notes VERSION 0.1)
-add_executable(Notes
-    source/main.c
-    source/error.c
+project(pss VERSION 0.1)
+
+add_executable(pss
+    source/pss.c
 ) 
-target_include_directories(Notes 
+
+target_include_directories(pss 
     PUBLIC include
     PUBLIC library/highwayhash
 )
-target_link_libraries(Notes
+
+target_link_libraries(pss
     ${CMAKE_CURRENT_SOURCE_DIR}/library/highwayhash/lib/libhighwayhash.a
 )
