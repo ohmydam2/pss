@@ -42,8 +42,8 @@ char const *errorToString(Error send_error) {
 }
 
 
-
 /***** HELP *****/
+
 
 Error checkArguments(int argc, char const **argv, Command *command) {
 #define TAG "checkArguments"
@@ -69,6 +69,32 @@ send_error:
     LOG("\n" USAGE_MESSAGE);
     FIRE(ERROR_INVALID_ARGUMENTS);
 #undef TAG
+}
+
+
+
+/***** COMMAND FUNCTIONS *****/
+
+void runAdd(int argc, char const **argv) {
+    // to implement
+}
+
+void runClean(int argc, char const **argv) {
+    // to implement
+}
+
+void runCommand(int argc, char const **argv, Command command) {
+    switch (command)
+    {
+    case ADD:
+        // to implement
+        break;
+    case CLEAN:
+        // to implement
+        break;
+    default:
+        break;
+    }
 }
 
 
