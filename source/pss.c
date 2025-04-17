@@ -11,16 +11,9 @@ int main(int argc, char const **argv) {
     Command command;
     BURN(checkArguments(argc, argv, &command));
 
-    switch (command) {
-        case ADD:
-            uint64_t hash;
-            BURN(hashFile(argv[2], &hash));
-            LOG("%llx\n", hash);
-        default:
-            break;
-    }
+    BURN(runCommand(argc, argv, command));
 
-    FIRE(ERROR_OK);
+    return ERROR_OK;
 #undef TAG
 }
 
@@ -42,8 +35,8 @@ char const *errorToString(Error send_error) {
 }
 
 
-/***** HELP *****/
 
+/***** HELP *****/
 
 Error checkArguments(int argc, char const **argv, Command *command) {
 #define TAG "checkArguments"
@@ -75,26 +68,40 @@ send_error:
 
 /***** COMMAND FUNCTIONS *****/
 
-void runAdd(int argc, char const **argv) {
-    // to implement
+Error runAdd(int fileCount, char const **fileNames) {
+#define TAG "runAdd"
+    // TODO
+    for (int i = 0; i < fileCount; i++) {
+        uint64_t hash;
+        BURN(hashFile(fileNames[i], &hash));
+        LOG("Hash of file %i is: %llx", i+1, hash);
+    }
+
+    return ERROR_OK;
+#undef TAG
 }
 
-void runClean(int argc, char const **argv) {
-    // to implement
+Error runClean(void) {
+    // TODO
+    return ERROR_OK;
 }
 
-void runCommand(int argc, char const **argv, Command command) {
+Error runCommand(int argc, char const **argv, Command command) {
+#define TAG "runCommand"
     switch (command)
     {
     case ADD:
-        // to implement
+        BURN(runAdd(argc-2, argv+2));
         break;
     case CLEAN:
-        // to implement
+        BURN(runClean());
         break;
     default:
         break;
     }
+
+    return ERROR_OK;
+#undef TAG
 }
 
 

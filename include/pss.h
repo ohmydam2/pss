@@ -37,9 +37,9 @@ char const *errorToString(Error error);
 
 typedef enum Command {
     ADD,
-    CHECK,
+    CHECK, // TODO
     CLEAN,
-    OPEN
+    OPEN   // TODO
 } Command;
 
 
@@ -51,6 +51,15 @@ typedef enum Command {
 
 
 Error checkArguments(int argc, char const **argv, Command *command);
+
+
+
+/***** COMMAND FUNCTIONS *****/
+
+Error runAdd(int fileCount, char const **fileNames);
+Error runClean(void);
+
+Error runCommand(int argc, char const **argv, Command command);
 
 
 
