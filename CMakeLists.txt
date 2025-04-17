@@ -8,9 +8,5 @@ add_executable(pss
 
 target_include_directories(pss 
     PUBLIC include
-    PUBLIC library/highwayhash
-)
-
-target_link_libraries(pss
-    ${CMAKE_CURRENT_SOURCE_DIR}/library/highwayhash/lib/libhighwayhash.a
+    PUBLIC library/komihash
 )

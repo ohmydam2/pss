@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "komihash.h"
+
+
 
 /***** LOG *****/
 
@@ -17,13 +20,13 @@
 
 typedef enum Error {
     ERROR_OK = 0,
-    ERROR_INVALID_ARGUMENTS = 1
+    ERROR_INVALID_ARGUMENTS = 1,
+    ERROR_IO = 2
 } Error;
 
 
-#define FIRE(__ERROR) do { Error error = ((__ERROR)); LOGE(error); return error; } while(0)
-
-#define BURN(__ERROR) do { Error error = ((__ERROR)); if (error != ERROR_OK) { LOGE(error); return error; }} while(0)
+#define FIRE(__ERROR) do { Error error = ((__ERROR)); LOGE(error); return error; } while (0)
+#define BURN(__ERROR) do { Error error = ((__ERROR)); if (error != ERROR_OK) { LOGE(error); return error; }} while (0)
 
 
 char const *errorToString(Error error);
@@ -34,17 +37,28 @@ char const *errorToString(Error error);
 
 typedef enum Command {
     ADD,
-    CLEAN
+    CHECK,
+    CLEAN,
+    OPEN
 } Command;
 
 
 #define USAGE_MESSAGE   \
     "Usage:\n"          \
     "pss add [files]\n" \
-    "pss clean\n"
+    "pss check\n"       \
+    "pss clean\n"       \
 
 
 Error checkArguments(int argc, char const **argv, Command *command);
 
+
+
+/***** HASH *****/
+
+#define BLOCK_SIZE 1024
+
+
+Error hashFile(char const *fileName, uint64_t *hash); 
 
 #endif
