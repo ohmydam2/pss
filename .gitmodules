@@ -1,9 +1,3 @@
-[submodule "library/highwayhash"]
-	path = library/highwayhash
-	url = https://github.com/google/highwayhash
-[submodule "library/spookyhash"]
-	path = library/spookyhash
-	url = https://github.com/g1mv/spookyhash
 [submodule "library/komihash"]
 	path = library/komihash
 	url = https://github.com/avaneev/komihash
