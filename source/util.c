@@ -1,5 +1,6 @@
 #include "util.h"
 
+#include <stdlib.h>
 #include <string.h>
 
 
@@ -23,7 +24,11 @@ void separateFileNameAndExtension(char const *fileName, char **name, char **exte
 }
 
 
-void getDataAndMetadataFileNames(char const *name, char **dataName, char ** metadataName) {
+void getDataAndMetadataFileNames(uint64_t hash, char **dataName, char ** metadataName) {
+    char name[16+1];
+    snprintf(name, 16, "%llx", hash);
+    name[16] = '\0';
+
     *dataName = calloc(strlen(DATA_OUT_FOLDER) + strlen(name) + 1, sizeof(char));
     *metadataName = calloc(strlen(METADATA_OUT_FOLDER) + strlen(name) + 1, sizeof(char));
 

@@ -8,6 +8,7 @@ add_executable(pss
     "source/interface.c"
     "source/hash.c"
     "source/command.c"
+    "source/util.c"
 ) 
 
 target_include_directories(pss 

@@ -26,11 +26,14 @@ typedef enum Error {
         fprintf(stderr, "\n");                       \
     } while (0)
 
+#define START_ERROR_STACK printf("***** ERROR STACK *****\n")
+
 #define FIRE(__ERROR, ...)           \
     do {                             \
         Error __error = ((__ERROR)); \
-        LOGE(__error);               \
+        START_ERROR_STACK;           \
         LOG(__VA_ARGS__);            \
+        LOGE(__error);               \
         return __error;              \
     } while (0)
 

@@ -3,12 +3,13 @@
 
 #include "log.h"
 
+#include <stdio.h>
 #include <stdint.h>
 
 
 #define BLOCK_SIZE 1024
 
 
-Error hashFile(char const *fileName, uint64_t *hash); 
+Error hashFile(FILE *fileHandle, uint64_t *hash); 
 
 #endif
